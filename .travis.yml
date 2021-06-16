@@ -1,0 +1,35 @@
+language: node_js
+
+node_js:
+  - '12'
+
+git:
+  depth: 3
+
+branches:
+  only:
+  - master
+
+script: yarn test
+
+cache:
+  directories:
+    - node_modules
+    - ~/.npm
+
+notifications:
+  email:
+    recipients:
+    - andres.fernando08@gmail.com
+    - andresf@ferudinato.com
+    on_success: always
+    on_failure: always
+
+deploy:
+  provider: heroku
+  skip-cleanup: true
+  keep-history: true
+  api_key: 9f98c146-9d5f-40f9-8ba7-75dc06c660e5
+  app: p-store-backend
+  on:
+    repo: andresfmj/platzi-store-backend
